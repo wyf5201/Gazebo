@@ -1,0 +1,13 @@
+<launch>
+	<!-- 设置机器人模型路径参数，需要设置模型路径 -->
+	<param name="robot_description" textfile="$(find wyf_description)/urdf/wyf.urdf" />
+
+	<!-- 运行joint_state_publisher节点，发布机器人的关节状态  -->
+	<node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+	
+	<!-- 运行robot_state_publisher节点，发布tf  -->
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+	
+	<!-- 运行rviz可视化界面，改变路径即可 -->
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find wyf_description)/config/wyf_urdf.rviz" required="true" />
+</launch>
